@@ -2,7 +2,7 @@
 
 ## BOT List
 
-* [Megumin (A fork of EvoBot)](/bots/discord/megumin) NodeJS 18.18.1
+* [Megumin (A fork of EvoBot)](/megumin) NodeJS 18.18.1
 
 ## How to import an egg
 
