@@ -1,0 +1,62 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-12-05T11:19:16+07:00",
+    "name": "Megumin",
+    "author": "no77neet@gmail.com",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/trenutoo\/pterodactyl-images:nodejs_18": "ghcr.io\/trenutoo\/pterodactyl-images:nodejs_18"
+    },
+    "file_denylist": [],
+    "startup": "node .\/dist\/index.js",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "apt-get update\r\napt-get install openssl python3 build-essential git -y -qq\r\napt-get purge -y --auto-remove\r\n\r\ncd \/mnt\/server\r\n\r\nif [[ -d .git\/ ]]; then\r\n    git pull\r\nelse\r\n    git clone https:\/\/github.com\/hoangvu12\/megumin.git .;  \r\nfi;\r\n\r\nnpm ci\r\nnpm run build\r\n\r\nrm Dockerfile\r\nrm CONTRIBUTING.md\r\nrm README.md\r\nrm CODE_OF_CONDUCT.md",
+            "container": "node:18.18.2-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Token",
+            "description": "Get a discord token at https:\/\/discordapp.com\/developers\/",
+            "env_variable": "TOKEN",
+            "default_value": "get_your_own_token_from_discord_",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:75",
+            "field_type": "text"
+        },
+        {
+            "name": "Use Invidious Proxy",
+            "description": "",
+            "env_variable": "USE_INVIDIOUS_PROXY",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Invidious Base URL",
+            "description": "",
+            "env_variable": "INVIDIOUS_BASE_URL",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:75",
+            "field_type": "text"
+        }
+    ]
+}
